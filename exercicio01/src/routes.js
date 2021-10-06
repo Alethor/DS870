@@ -1,54 +1,52 @@
 const express = require("express");
 const router = express.Router();
-const DB = require("./characters");
+const DB = require("./teams");
 
-router.get("/characters", (req, res) => {
-    return res.json(DB.characters);
+router.get("/teams", (req, res) => {
+    return res.json(DB.teams);
 });
 
-router.get("/characters/:id", (req, res) => {
+router.get("/teams/:id", (req, res) => {
     if(isNaN(req.params.id)){
-
-       return res.sendStatus(400);
-    
+       return res.sendStatus(400);  
     }else{
         const id = parseInt(req.params.id);
-        const character = DB.characters.find((element) => element.id === id);
+        const team = DB.teams.find((element) => element.id === id);
 
-        if(character){
-            return res.json(character);
+        if(team){
+            return res.json(team);
         }else{
-            return res.status(404).json({msg:"Personagem não encontrado"});
+            return res.status(404).json({msg:"Time nÃ£o encontrado"});
         }
     }
 });
 
-router.delete("/characters/:id", (req, res) => {
+router.delete("/teams/:id", (req, res) => {
     if(isNaN(req.params.id)){
 
        return res.sendStatus(400);
     
     }else{
         const id = parseInt(req.params.id);
-        const index = DB.characters.findIndex((element) => element.id === id);
+        const index = DB.teams.findIndex((element) => element.id === id);
 
-        if(index == -1){
-            return res.status(404).json({msg:"Personagem não encontrado!"});
+        if(index === -1){
+            return res.status(404).json({msg:"Time nÃ£o encontrado!"});
         }else{
-            DB.characters.splice(index, 1);
-            return res.json({msg:"Personagem foi deletado!"});
+            DB.teams.splice(index, 1);
+            return res.json({msg:"Time foi deletado!"});
         }
     }
 });
 
-router.put("/characters/:id", (req, res) => {
+router.put("/teams/:id", (req, res) => {
     if(isNaN(req.params.id)){
 
        return res.sendStatus(400);
     
     }else{
         const id = parseInt(req.params.id);
-        const index = DB.characters.findIndex((element) => element.id === id);
+        const index = DB.teams.findIndex((element) => element.id === id);
 
         if(index != undefined){
             
