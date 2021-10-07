@@ -5,17 +5,9 @@ var DB = {
       name: "Atlético-PR",
       city: "Curitiba",
       state: "Paraná",
-      serie: "A",
+      league: "A",
       titles: [
-        {
-          stateChampionships: 4,
-        },
-        {
-          nacionalChampionships: 5,
-        },
-        {
-          internacionalChampionships: 5,
-        },
+        { state: 1 },{ nacional: 2 },{ internacional: 5 },
       ],
       payroall: 400.0,
     },
@@ -24,17 +16,9 @@ var DB = {
       name: "Coritiba",
       city: "Curitiba",
       state: "Paraná",
-      serie: "B",
+      league: "B",
       titles: [
-        {
-          state: 1,
-        },
-        {
-          nacional: 2,
-        },
-        {
-          internacional: 5,
-        },
+        { state: 1 },{ nacional: 2 }, { internacional: 5 },
       ],
       payroall: 350.0,
     },

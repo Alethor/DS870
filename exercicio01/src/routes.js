@@ -56,4 +56,36 @@ router.put("/teams/:id", (req, res) => {
     }
 });
 
+
+
+router.post("/teams", (req, res) => {
+    const {
+      name,
+      city,
+      state,
+      league,
+      titles,
+      payroall
+    } = req.body;
+
+
+    if (name && city && state && titles && payroall !== undefined){
+        console.log(league);
+        const leagues = ['A', 'B', 'C', null, undefined];
+        if (leagues.includes(league)) {
+            DB.teams.push({
+                name,
+                city,
+                state,
+                league,
+                titles,
+                payroall
+            });
+            return res.status(201).json({msg:"Time cadastrado com sucesso"});
+        }
+        return res.status(400).json({msg:`A série \'${league}\' não é permitida`});
+    } 
+    return res.status(400).json({msg:"Favor informar todos os dados obrigatórios"});
+});
+
 module.exports = router;
